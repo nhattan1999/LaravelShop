@@ -48,8 +48,10 @@ class CheckoutController extends Controller
         return Redirect::to('/checkout');
     }
     public function checkout() {
+      $customer_id = Session::get('customer_id');
       $cate_pro = Category::where('category_status', '1')->get();
-      return view('pages.checkout.checkout')->with('cate_pro', $cate_pro);
+      $customer = Customer::where('customer_id', $customer_id)->first();
+      return view('pages.checkout.checkout')->with('cate_pro', $cate_pro)->with('customer', $customer);
     }
     public function save_checkout_customer(Request $request) {
        $data = $request->all();
