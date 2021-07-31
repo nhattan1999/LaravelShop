@@ -133,7 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           						<li><a href="{{URL::to('/view-order')}}">View order</a></li>
                     </ul>
                 </li>
-								<li class="sub-menu">
+								<!-- <li class="sub-menu">
 										<a href="javascript:;">
 												<i class="fa fa-book"></i>
 												<span>Promo</span>
@@ -142,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<li><a href="{{URL::to('/add-promo')}}">Add promo</a></li>
 											<li><a href="{{URL::to('/view-promo')}}">View promo</a></li>
 										</ul>
-								</li>
+								</li> -->
 
 
             </ul>
