@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                     <section class="panel">
                         <header class="panel-heading">
-                            Edit category product
+                            Update promo
                         </header>
                         <div class="panel-body">
 
@@ -16,30 +16,30 @@
                                   Session::put('msg', null);
                                 }
                                ?>
-                                <form role="form" action="{{URL::to('/update-category-product/'.$edit_category->category_id)}}" method="post">
+                                <form role="form" action="{{URL::to('/update-promo/'.$edit_promo->promo_id)}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <div class="form-group">
-                                    <label for="categoryProductName">Name</label>
-                                    <input type="text" minlength="5" name="category_name" value="{{$edit_category->category_name}}"class="form-control" id="categoryProductName" placeholder="Enter category name">
+                                    <label for="promoName">Name</label>
+                                    <input type="text" minlength="5" name="promo_name" class="form-control" id="promoName" value="{{$edit_promo->promo_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="categoryProductDesc">Description</label>
-                                    <textarea style="resize: none" rows="6" name="category_desc" class="form-control" id="categoryProductDesc" placeholder="Enter description">{{$edit_category->category_desc}}</textarea>
-
+                                    <label >Image</label>
+                                    <input type="file" name="promo_image" class="form-control">
+                                    <img src="{{URL::to('storage/upload/promo/'.$edit_promo->promo_image)}}" height="90" width="90">
                                 </div>
                                 <div class="form-group">
                                   <label>Status</label>
-                                  <select name="category_status"class="form-control input-sm m-bot15">
-                                      @if($edit_category->category_status == 1)
-                                        <option value="1" selected>Present</option>
-                                        <option value="0">Hidden</option>
-                                      @else
+                                  <select name="promo_status"class="form-control input-sm m-bot15">
+                                    @if($edit_promo->promo_status == 1)
+                                      <option value="1" selected>Present</option>
+                                      <option value="0">Hidden</option>
+                                    @else
                                       <option value="1" >Present</option>
                                       <option value="0" selected>Hidden</option>
-                                      @endif
+                                    @endif
                                   </select>
                                 </div>
-                                <button type="submit" name="update_category_product" class="btn btn-info">Update</button>
+                                <button type="submit" name="update_promo" class="btn btn-info">Update</button>
                                 </form>
                             </div>
 

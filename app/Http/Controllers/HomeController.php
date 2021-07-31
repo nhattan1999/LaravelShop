@@ -7,6 +7,7 @@ use DB;
 use App\Http\Requests;
 use App\Models\Category;
 use App\Models\Product;
+
 use Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -21,7 +22,7 @@ class HomeController extends Controller
     public function find_product(Request $request) {
       $keywords = $request->search_keyword;
 
-      $cate_product = Category::where('category_status','0')->orderby('category_id','desc')->get();
+      $cate_product = Category::where('category_status','1')->get();
 
       $search_product = Product::where('product_name','like','%'.$keywords.'%')->get();
 

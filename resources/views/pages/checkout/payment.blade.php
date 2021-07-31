@@ -4,7 +4,7 @@
 		<div class="container">
       <div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="{{URL::to('/trang-chu')}}">Home</a></li>
+				  <li><a href="{{URL::to('/home-page')}}">Home</a></li>
 				  <li class="active">Payment</li>
 				</ol>
 			</div>
@@ -30,7 +30,7 @@
             @foreach ($content as $key => $c)
             <tr>
               <td class="cart_product">
-                <a href=""><img src="{{URL::to('public/upload/product/'.$c->options->image)}}" width="50" alt=""></a>
+                <a href=""><img src="{{URL::to('storage/upload/product/'.$c->options->image)}}" width="50" alt=""></a>
               </td>
               <td class="cart_description">
                 <h4><a href="">{{$c->name}}</a></h4>

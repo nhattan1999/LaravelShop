@@ -53,7 +53,7 @@ class ProductController extends Controller
       $get_name_image = $get_image->getClientOriginalName();
       $name_image = current(explode('.',$get_name_image));
       $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-      $get_image->move('public/upload/product',$new_image);
+      $get_image->move('storage/upload/product',$new_image);
       $product->product_image = $new_image;
       $product->save();
       Session::put('msg', 'Add product successfully');
@@ -88,7 +88,7 @@ class ProductController extends Controller
       $get_name_image = $get_image->getClientOriginalName();
       $name_image = current(explode('.',$get_name_image));
       $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
-      $get_image->move('public/upload/product',$new_image);
+      $get_image->move('storage/upload/product',$new_image);
       $product->product_image = $new_image;
       $product->save();
       Session::put('msg', 'Update product successfully');
@@ -116,7 +116,7 @@ class ProductController extends Controller
   public function search_product(Request $request) {
     $keywords = $request->search_keyword;
 
-    $cate_product = Category::where('category_status','0')->orderby('category_id','desc')->get();
+    $cate_product = Category::where('category_status','1')->orderby('category_id','desc')->get();
 
     $search_product = Product::where('product_name','like','%'.$keywords.'%')->get();
     $manage_product = view('admin.view_product')->with('cate_pro',$cate_product)->with('all_products',$search_product);

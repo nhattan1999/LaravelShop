@@ -3,12 +3,12 @@
 <div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<img src="{{URL::to('public/upload/product/'.$product_detail->product_image)}}" alt="" />
+								<img src="{{URL::to('storage/upload/product/'.$product_detail->product_image)}}" alt="" />
 							</div>
 						</div>
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
-								<img src="{{URL::to('public/frontend/images/new.jpg')}}" class="newarrival" alt="" />
+								<img src="{{URL::to('storage/frontend/images/new.jpg')}}" class="newarrival" alt="" />
 								<h2>{{$product_detail->product_name}}</h2>
 							  <form action="{{URL::to('/save-cart')}}" method="post">
 									{{csrf_field()}}
@@ -31,7 +31,7 @@
 								@endif
 
 								<p><b>Category:</b> {{$product_detail->category_name}}</p>
-								<a href=""><img src="{{URL::to('public/frontend/images/share.png')}}" class="share img-responsive"  alt="" /></a>
+							
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
@@ -47,7 +47,7 @@
 											<div class="product-image-wrapper">
 												<div class="single-products">
 													<div class="productinfo text-center">
-														<img src="{{URL::to('public/upload/product/'.$relate->product_image)}}" alt="" width="50"  heihgt="50"/>
+														<img src="{{URL::to('storage/upload/product/'.$relate->product_image)}}" alt="" width="50"  heihgt="50"/>
 														<h2>{{$relate->product_price}}</h2>
 														<p>{{$relate->product_name}}</p>
 														<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>

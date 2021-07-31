@@ -35,12 +35,12 @@ class CheckoutController extends Controller
     public function add_customer(Request $request) {
         $data = $request->all();
 
-        $customer = new Customer();
-        $customer->customer_name = $data['customer_name'];
-        $customer->customer_email = $data['customer_email'];
-        $customer->customer_password = md5($data['customer_password']);
-        $customer->customer_phone = $data['customer_phone'];
-        $customer_id = Customer::insertGetId($data);
+        $customer = array();
+        $customer['customer_name'] = $data['customer_name'];
+        $customer['customer_email'] = $data['customer_email'];
+        $customer['customer_password'] = md5($data['customer_password']);
+        $customer['customer_phone'] = $data['customer_phone'];
+        $customer_id = Customer::insertGetId($customer);
 
         Session::put('customer_id', $customer_id);
         Session::put('customer_name', $request->customer_name);

@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+use App\Models\Promo;
+ ?>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -17,11 +20,11 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="{{('public/frontend/images/favicon.ico')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('public/frontend/images/apple-touch-icon-144-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('public/frontend/images/apple-touch-icon-114-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('public/frontend/images/apple-touch-icon-72-precomposed.png')}}">
-    <link rel="apple-touch-icon-precomposed" href="{{asset('public/frontend/images/apple-touch-icon-57-precomposed.png')}}">
+    <link rel="shortcut icon" href="{{('storage/frontend/images/favicon.ico')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('storage/frontend/images/apple-touch-icon-144-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('storage/frontend/images/apple-touch-icon-114-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('storage/frontend/images/apple-touch-icon-72-precomposed.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{asset('storage/frontend/images/apple-touch-icon-57-precomposed.png')}}">
 
 </head><!--/head-->
 
@@ -58,31 +61,9 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="{{URL::to('/trang-chu')}}"><img src="{{asset('public/frontend/images/hyago_shop.jpg')}}" width="150" height="70" alt="" /></a>
+							<a href="{{URL::to('/home-page')}}"><img src="{{asset('storage/frontend/images/hyago_shop.jpg')}}" width="150" height="70" alt="" /></a>
 						</div>
-						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									USA
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canada</a></li>
-									<li><a href="#">UK</a></li>
-								</ul>
-							</div>
 
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									DOLLAR
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="#">Canadian Dollar</a></li>
-									<li><a href="#">Pound</a></li>
-								</ul>
-							</div>
-						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
@@ -135,7 +116,7 @@
 						</div>
 						<div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="{{URL::to('/trang-chu')}}" class="active">Home</a></li>
+								<li><a href="{{URL::to('/home-page')}}" class="active">Home</a></li>
 								<!-- <li class="dropdown"><a href="#">Category<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
@@ -159,11 +140,15 @@
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->
-
+  <?php
+     $promos = array();
+     $promos = Promo::where('promo_status', '1')->orderby('promo_id', 'desc')->limit(3)->get();
+   ?>
 	<section id="slider"><!--slider-->
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
+
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
@@ -172,40 +157,40 @@
 						</ol>
 
 						<div class="carousel-inner">
-							<div class="item active">
-								<div class="col-sm-6">
-									<img src="{{asset('public/frontend/images/adidas_promotion.png')}}" height="500"/>
-								</div>
-								<!-- <div class="col-sm-6">
-									<img src="{{asset('public/frontend/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('public/frontend/images/pricing.png')}}"  class="pricing" alt="" />
-								</div> -->
-							</div>
-							<div class="item">
-								<div class="col-sm-6">
-                  <div class="col-sm-6">
-  									<img src="{{asset('public/frontend/images/adidas_promotion2.png')}}" height="500"/>
-  								</div>
-								</div>
-								<!-- <div class="col-sm-6">
-									<img src="{{asset('public/frontend/images/girl2.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('public/frontend/images/pricing.png')}}"  class="pricing" alt="" />
-								</div> -->
-							</div>
-
-							<div class="item">
-								<div class="col-sm-6">
-                  <div class="col-sm-6">
+              	<div class="item active">
+    								<div class="col-sm-6">
+    									<img src="{{URL::to('storage/upload/promo/'.$promos[0]->promo_image)}}" height="500"/>
+    								</div>
+    								<!-- <div class="col-sm-6">
+    									<img src="{{asset('storage/frontend/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
+    									<img src="{{asset('storage/frontend/images/pricing.png')}}"  class="pricing" alt="" />
+    								</div> -->
+    					  </div>
+                <div class="item">
+  								<div class="col-sm-6">
                     <div class="col-sm-6">
-    									<img src="{{asset('public/frontend/images/nike_promotion.jpg')}}" height="500"/>
+    									<img src="{{URL::to('storage/upload/promo/'.$promos[1]->promo_image)}}" height="500"/>
     								</div>
   								</div>
-								</div>
-								<!-- <div class="col-sm-6">
-									<img src="{{asset('public/frontend/images/girl3.jpg')}}" class="girl img-responsive" alt="" />
-									<img src="{{asset('public/frontend/images/pricing.png')}}" class="pricing" alt="" />
-								</div> -->
-							</div>
+  								<!-- <div class="col-sm-6">
+  									<img src="{{asset('public/frontend/images/girl2.jpg')}}" class="girl img-responsive" alt="" />
+  									<img src="{{asset('public/frontend/images/pricing.png')}}"  class="pricing" alt="" />
+  								</div> -->
+  							</div>
+
+  							<div class="item">
+  								<div class="col-sm-6">
+                    <div class="col-sm-6">
+                      <div class="col-sm-6">
+      									<img src="{{URL::to('storage/upload/promo/'.$promos[2]->promo_image)}}" height="500"/>
+      								</div>
+    								</div>
+  								</div>
+  								<!-- <div class="col-sm-6">
+  									<img src="{{asset('public/frontend/images/girl3.jpg')}}" class="girl img-responsive" alt="" />
+  									<img src="{{asset('public/frontend/images/pricing.png')}}" class="pricing" alt="" />
+  								</div> -->
+  							</div>
 
 						</div>
 
@@ -251,7 +236,7 @@
 						</div><!--/price-range-->
             <!--shipping-->
 						<!-- <div class="shipping text-center">
-							<img src="{{('public/frontend/images/shipping.jpg')}}" alt="" />
+							<img src="{{('storage/frontend/images/shipping.jpg')}}" alt="" />
 						</div><!--/shipping-->
 
 					</div>

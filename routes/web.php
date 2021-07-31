@@ -8,9 +8,10 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PromoController;
 //frontend
 Route::get('/',[HomeController::class, 'index']);
-Route::get('/trang-chu', [HomeController::class, 'index']);
+Route::get('/home-page', [HomeController::class, 'index']);
 Route::post('/find-product', [HomeController::class, 'find_product']);
 
 //CategoryHome
@@ -66,3 +67,11 @@ Route::get('/view-order', [OrderController::class, 'view_order']);
 
 //Send mail
 Route::get('/send-email/{order_id}', [CheckoutController::class, 'send_email']);
+
+//Promo
+Route::get('/add-promo', [PromoController::class, 'add_promo']);
+Route::get('/edit-promo/{promo_id}', [PromoController::class, 'edit_promo']);
+Route::get('/delete-promo/{promo_id}', [PromoController::class, 'delete_promo']);
+Route::get('/view-promo', [PromoController::class, 'view_promo']);
+Route::post('/save-promo', [PromoController::class, 'save_promo']);
+Route::post('/update-promo/{promo_id}', [PromoController::class, 'save_update_promo']);

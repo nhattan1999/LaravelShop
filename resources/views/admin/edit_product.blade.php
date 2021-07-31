@@ -39,7 +39,7 @@
                                 <div class="form-group">
                                     <label >Image</label>
                                     <input type="file" name="product_image" class="form-control">
-                                    <img src="{{URL::to('public/upload/product/'.$edit_product->product_image)}}" height="90" width="90">
+                                    <img src="{{URL::to('storage/upload/product/'.$edit_product->product_image)}}" height="90" width="90">
                                 </div>
                                 <div class="form-group">
                                   <label>Category</label>

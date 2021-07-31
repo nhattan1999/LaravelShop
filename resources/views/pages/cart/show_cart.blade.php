@@ -3,7 +3,7 @@
 <div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="{{URL::to('/trang-chu')}}">Home</a></li>
+				  <li><a href="{{URL::to('/home-page')}}">Home</a></li>
 				  <li class="active">Shopping Cart</li>
 				</ol>
 			</div>
@@ -26,7 +26,7 @@
             @foreach ($content as $key => $c)
             <tr>
               <td class="cart_product">
-                <a href=""><img src="{{URL::to('public/upload/product/'.$c->options->image)}}" width="50" alt=""></a>
+                <a href=""><img src="{{URL::to('storage/upload/product/'.$c->options->image)}}" width="50" alt=""></a>
               </td>
               <td class="cart_description">
                 <h4><a href="">{{$c->name}}</a></h4>
@@ -62,16 +62,16 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="total_area">						
+					<div class="total_area">
 						<?php
 							$customer_id = Session::get('customer_id');
 							if ($customer_id != null) {
 						?>
-								<li><a href="{{URL::to('/checkout')}}" class="btn btn-default check_out"><i class="fa fa-user"></i> Checkout</a></li>
+								<a href="{{URL::to('/checkout')}}" class="btn btn-default check_out"><i class="fa fa-user"></i> Checkout</a>
 						<?php
 						}  else {
 						 ?>
-								<li><a href="{{URL::to('/login-checkout')}}" class="btn btn-default check_out"><i class="fa fa-user"></i> Checkout</a></li>
+								<a href="{{URL::to('/login-checkout')}}" class="btn btn-default check_out"><i class="fa fa-user"></i> Checkout</a>
 						<?php } ?>
 					</div>
 				</div>
