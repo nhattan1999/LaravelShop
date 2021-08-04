@@ -143,6 +143,7 @@ use App\Models\Promo;
   <?php
      $promos = array();
      $promos = Promo::where('promo_status', '1')->orderby('promo_id', 'desc')->limit(3)->get();
+     $count = count($promos);
    ?>
 	<section id="slider"><!--slider-->
 		<div class="container">
@@ -159,7 +160,11 @@ use App\Models\Promo;
 						<div class="carousel-inner">
               	<div class="item active">
     								<div class="col-sm-6">
-    									<img src="{{URL::to('storage/upload/promo/'.$promos[0]->promo_image)}}" height="500"/>
+                      @if ($count >= 1)
+                        <img src="{{URL::to('storage/upload/promo/'.$promos[0]->promo_image)}}" height="500"/>
+                      @else
+                        <img src="https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/5/0/2/6/226205-6-eng-GB/Turkish-Hazelnut-SIC-Food-20152_news_large.jpg" height="500"/>
+                      @endif
     								</div>
     								<!-- <div class="col-sm-6">
     									<img src="{{asset('storage/frontend/images/girl1.jpg')}}" class="girl img-responsive" alt="" />
@@ -169,7 +174,11 @@ use App\Models\Promo;
                 <div class="item">
   								<div class="col-sm-6">
                     <div class="col-sm-6">
-    									<img src="{{URL::to('storage/upload/promo/'.$promos[1]->promo_image)}}" height="500"/>
+                      @if ($count >= 2)
+                        <img src="{{URL::to('storage/upload/promo/'.$promos[1]->promo_image)}}" height="500"/>
+                      @else
+                        <img src="https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/5/0/2/6/226205-6-eng-GB/Turkish-Hazelnut-SIC-Food-20152_news_large.jpg" height="500"/>
+                      @endif
     								</div>
   								</div>
   								<!-- <div class="col-sm-6">
@@ -182,7 +191,11 @@ use App\Models\Promo;
   								<div class="col-sm-6">
                     <div class="col-sm-6">
                       <div class="col-sm-6">
-      									<img src="{{URL::to('storage/upload/promo/'.$promos[2]->promo_image)}}" height="500"/>
+                        @if ($count >= 3)
+                          <img src="{{URL::to('storage/upload/promo/'.$promos[2]->promo_image)}}" height="500"/>
+                        @else
+                          <img src="https://cdn-a.william-reed.com/var/wrbm_gb_food_pharma/storage/images/5/0/2/6/226205-6-eng-GB/Turkish-Hazelnut-SIC-Food-20152_news_large.jpg" height="500"/>
+                        @endif
       								</div>
     								</div>
   								</div>
